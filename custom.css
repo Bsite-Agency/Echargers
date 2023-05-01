@@ -1,0 +1,57 @@
+.headline{
+    flex-direction: column;
+}
+
+.headline > .headline__after{
+    margin-left: 0;
+}
+
+.headline > .headline__after::before{
+    display: none;
+}
+
+.hotspot:not(.--slider):not(.--list):not(.--added) .products{
+    border: none;
+}
+
+#main_hotspot_zone1 .product,
+#main_hotspot_zone2 .product,
+#main_hotspot_zone3 .product,
+#main_hotspot_zone4 .product{
+    text-align: center;
+}
+
+#main_hotspot_zone1 .product .product__prices,
+#main_hotspot_zone2 .product .product__prices,
+#main_hotspot_zone3 .product .product__prices,
+#main_hotspot_zone4 .product .product__prices {
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+#main_hotspot_zone1 strong.price,
+#main_hotspot_zone2 strong.price,
+#main_hotspot_zone3 strong.price,
+#main_hotspot_zone4 strong.price {
+    font-weight: normal;
+}
+
+#main_hotspot_zone1 span.price.--max ~ strong.price,
+#main_hotspot_zone2 span.price.--max ~ strong.price,
+#main_hotspot_zone3 span.price.--max ~ strong.price,
+#main_hotspot_zone4 span.price.--max ~ strong.price {
+    color: red;
+}
+
+
+/* stópka */
+#footer_links .footer_links#menu_orders,
+#footer_links .footer_links#menu_account {
+    border: none;
+}
+
+footer i{
+    display: none !important;
+}
