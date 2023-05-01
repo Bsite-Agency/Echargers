@@ -45,6 +45,20 @@
     color: red;
 }
 
+.seo-text > p {
+    text-align: justify;
+}
+  
+.newsletter-and-social-media {
+    display: flex;
+    gap: 32px;
+}
+  
+.newsletter-and-social-media > .tile {
+    flex: 1 0 0;
+    border: 1px solid lime;
+    border-radius: 32px;
+}
 
 /* stópka */
 #footer_links .footer_links#menu_orders,
@@ -54,4 +68,347 @@
 
 footer i{
     display: none !important;
+}
+
+#links_footer_1 ul.footer_links_sub > li:nth-child(2n + 1) {
+    text-transform: uppercase;
+    color: #807675;
+    padding-bottom: .25rem;
+}
+
+@media (max-width: 979px) {
+    .topBasket .badge {
+        z-index: 50;
+        transform: translateY(-30%);
+    }
+}
+/* login, favourites, cart */
+@media (min-width: 979px) {
+    header #menu_settings{
+        height: 46px;
+    }
+    #menu_settings .open_trigger {
+        width: 60px;
+        float: left;
+    }
+    .flag {
+        width: 30px;
+        height: 30px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        background-size: 55px;
+        background-position: center;
+        border-radius: 50%;
+    }
+
+    .flag_eng {
+        background: url('/data/include/cms/custom_flags/united-kingdom.svg') no-repeat scroll;
+        background-size: contain;
+    }
+
+    #menu_settings .account_link,
+    #menu_settings .wishlist_link {
+        font-size: 0;
+        color: transparent;
+    }
+
+    #menu_settings .account_link::before,
+    #menu_settings .wishlist_link::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        background-size: contain;
+        vertical-align: -8px;
+        margin-right: 5px;
+    }
+
+    #menu_settings .account_link::before {
+        background-image: url("/data/include/cms/icons/account.svg");
+    }
+
+    #menu_settings .wishlist_link::before {
+        background-image: url("/data/include/cms/icons/favourite.svg");
+    }
+
+    #menu_settings .account_link::after,
+    #menu_settings .wishlist_link span {
+        display: none;
+    }
+    .topBasket__sub{
+        padding: 0 !important;
+    }
+    
+    .topBasket__sub::before {
+        content: unset;
+    }
+
+    .topBasket__price {
+        line-height: 42px !important;
+    }
+
+    .topBasket .badge {
+        position: absolute;
+        left: 14px;
+        top: 21px;
+        z-index: 50;
+    }
+
+    .topBasket__sub strong {
+        margin-right: 10px;
+    }
+}
+.topBasket__sub::after {
+    content: "";
+    background-image: url("/data/include/cms/icons/basket.svg");
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+}
+
+@media (max-width: 1200px) and (min-width: 979px) {
+    /*.topBasket {
+        width: 140px;
+        max-width: 140px;
+    }
+
+    .topBasket__sub {
+        width: 140px;
+    }
+
+    #menu_additional {
+        line-height: 33px;
+    }
+    */
+    #menu_settings .wishlist_link {
+        margin-left: 14px;
+    }
+
+    #menu_settings .account_link::before,
+    #menu_settings .wishlist_link::before {
+        content: "";
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        vertical-align: -8px;
+        margin-right: 5px;
+    }
+}
+/* login, favourites, cart */
+@media (min-width: 979px) {
+    header #menu_settings {
+        height: 46px;
+        justify-content: center !important;
+    }
+
+    #menu_settings .account_link::before,
+    #menu_settings .wishlist_link::before {
+        content: "";
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        vertical-align: -8px;
+        margin-right: 5px;
+    }
+
+    .topBasket__sub::after {
+        content: "";
+        background-image: url("/data/include/cms/icons/basket.svg");
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+    }
+
+    .topBasket__price {
+        line-height: 42px !important;
+    }
+
+    .topBasket__sub::after {
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+    }
+
+    .menu_search__submit:before{
+        content: '' !important;
+        background-image: url("/data/include/cms/icons/search.svg");
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+    }
+}
+
+/* modifying header */
+@media (min-width: 979px){
+    header {
+        grid-template-columns: minmax(auto,40rem) 42.5% calc(42.5% - 165px) 110px 55px;
+        grid-column-gap: 0;
+        grid-template-areas:
+            "bars_top bars_top bars_top bars_top bars_top"
+            "rabateCode rabateCode rabateCode rabateCode rabateCode"
+            "freeShipping freeShipping freeShipping freeShipping freeShipping"
+            "logo menu_categories menu_search menu_settings menu_basket"
+            "breadcrumbs breadcrumbs breadcrumbs breadcrumbs breadcrumbs";
+    }
+    header .nav-link{
+        padding: 8px 4px 8px;
+    }
+    header .nav-item:first-child .nav-link{
+        padding-left: 0;
+    }
+    header .navbar-nav{
+        font-size: 1.2rem;
+    }
+    header ul.navbar-nav.mx-md-n2{
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+@media (min-width: 1200px){
+    header .nav-link{
+        padding: 8px 7px 8px;
+    }
+    header .navbar-nav{
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 979px) {
+    #logo{
+        justify-content: center;
+    }
+    #logo img{
+        max-height: 56px;
+    }
+    #menu_navbar{
+        padding: 0;
+        border: none;
+    }
+    #menu_navbar > ul > li:last-child a[title="SALE"]{
+        color: #FF0D00;
+    }
+    #menu_search .menu_search__input{
+        border: none;
+        padding-left: 1rem;
+        padding-right: 4rem;
+    }
+    #menu_search .menu_search__submit{
+        pointer-events: none;
+    }
+    #menu_search.--focus .menu_search__submit{
+        pointer-events: all;
+    }
+    #menu_search .menu_search__block {
+        margin-left: auto;
+        width: 50px;
+    }
+    #menu_search.--focus .menu_search__block {
+        left: unset;
+        right: 1.5rem;
+        width: 300px;
+    }
+    #menu_basket .topBasket__sub > .topBasket__price{
+        display: none;
+    }
+    #menu_additional {
+        flex-direction: row;
+        align-items: center;
+    }
+    #menu_additional .slt_lists{
+        left: unset;
+        right: -2.5rem;
+    }
+}
+@media (min-width: 757px){
+    .product_name__name {
+        font-size: 3.5rem;
+    }
+    .product_name__description{
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 979px) {
+    .hotspot.--list .product__prices .price {
+        margin-left: 0;
+    }
+}
+.wide .navbar-subnav{
+    width: fit-content !important;
+}
+@media (min-width: 757px){
+    .big_label small, .headline small, .big_label__after, .headline__after {
+        position: absolute;
+        right: 0;
+    }
+}
+
+/* products arrow slider */
+#main_cms2{
+    overflow: visible;
+    text-align: center;
+}
+section.hotspot{
+    position: relative;
+}
+section.hotspot > .products.d-flex.flex-wrap {
+    scroll-behavior: smooth;
+}
+section.hotspot button.arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 20px;
+    height: 20px;
+    border: 1px solid #2C1A1926;
+    background: #fff;
+    background-image: url("/data/include/cms/icons/arrow-right.svg");
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-tap-highlight-color: #2C1A1926;
+    z-index: 10;
+    
+	transition: .2s opacity ease-in-out, .2s visibility ease-in-out;
+}
+section.hotspot button.arrow-left{
+    left: -10px;
+    transform: translateY(-50%) rotate(225deg);
+}
+section.hotspot button.arrow-right{
+    right: -10px;
+}
+section.hotspot.hidden-f > .arrow-left{
+    opacity: 0;
+    visibility: hidden;
+}
+section.hotspot.hidden-e > .arrow-right{
+    opacity: 0;
+    visibility: hidden;
+}
+@media (min-width: 1360px){
+    section.hotspot button.arrow{
+        width: 36px;
+        height: 36px;
+        background-size: 18px;
+    }
+    section.hotspot button.arrow-left{
+        left: -54px;
+    }
+    section.hotspot button.arrow-right{
+        right: -54px;
+    }
 }
