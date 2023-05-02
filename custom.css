@@ -124,11 +124,6 @@ footer i{
         border-radius: 50%;
     }
 
-    .flag_eng {
-        background: url('/data/include/cms/custom_flags/united-kingdom.svg') no-repeat scroll;
-        background-size: contain;
-    }
-
     #menu_settings .account_link,
     #menu_settings .wishlist_link {
         font-size: 0;
