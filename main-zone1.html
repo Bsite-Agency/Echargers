@@ -1,23 +1,31 @@
 <div class="advantages">
     <div class="advantage">
-        <img class="advantage-icon" src="/data/include/cms/icons/safety.svg" alt="bezpieczne zakupy" width=18>
-        <h5>Bezpieczne zakupy</h5>
-        <p>Kupuj szybko i bezpiecznie (SHS + HTTPS)</p>
+        <img class="advantage-icon" src="/data/include/cms/icons/safety.svg" alt="bezpieczne zakupy" width=32>
+        <div>
+            <h5>Bezpieczne zakupy</h5>
+            <p>Kupuj szybko i bezpiecznie (SHS + HTTPS)</p>
+        </div>
     </div>
     <div class="advantage">
-        <img class="advantage-icon" src="/data/include/cms/icons/coin.svg" alt="konkurencyjne ceny" width=18>
-        <h5>Konkurencyjne ceny</h5>
-        <p>Najlepsza oferta cenowo w branży</p>
+        <img class="advantage-icon" src="/data/include/cms/icons/coin.svg" alt="konkurencyjne ceny" width=32>
+        <div>
+            <h5>Konkurencyjne ceny</h5>
+            <p>Najlepsza oferta cenowo w branży</p>
+        </div>
     </div>
     <div class="advantage">
-        <img class="advantage-icon" src="/data/include/cms/icons/certificte.svg" alt="certyfikowana obsługa" width=18>
-        <h5>Certyfikowana obsługa</h5>
-        <p>Gwarancja opieki pozakupowej (30 dni)</p>
+        <img class="advantage-icon" src="/data/include/cms/icons/certificate.svg" alt="certyfikowana obsługa" width=32>
+        <div>
+            <h5>Certyfikowana obsługa</h5>
+            <p>Gwarancja opieki pozakupowej (30 dni)</p>
+        </div>
     </div>
     <div class="advantage">
-        <img class="advantage-icon" src="/data/include/cms/icons/ranking.svg" alt="lider" width=18>
-        <h5>Lider konsumentów</h5>
-        <p>Ulubieniec konsumentów na rynku</p>
+        <img class="advantage-icon" src="/data/include/cms/icons/ranking.svg" alt="lider" width=32>
+        <div>
+            <h5>Lider konsumentów</h5>
+            <p>Ulubieniec konsumentów na rynku</p>
+        </div>
     </div>
 </div>
 
@@ -64,8 +72,18 @@
     .menu-buttons > .button > a{
         display: block;
         width: 100%;
-        background: grey;
-        border-radius: 24px;
+        height: 100%;
+        min-height: 250px;
+        padding: 16px;
+        text-decoration: none;
+        position: relative;
+        z-index: 10;
+    }
+    
+    .menu-buttons .title{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .menu-buttons .title > *{
@@ -73,14 +91,60 @@
     }
 
     .menu-buttons .title > *:first-of-type{
+        font-size: 18px;
+        font-weight: 500;
+        color: #000D0D;
         background: #fff;
-        border-radius: 24px;
-        padding: 32px;
+        border-radius: 8px 8px 8px 0;
+        padding: 12px 14px;
+        min-width: 134px;
+        text-align: center;
     }
 
     .menu-buttons .title > *:last-of-type{
+        font-size: 12px;
+        color: #fff;
         background: #00d8ff;
-        border-radius: 24px;
-        padding: 32px;
+        border-radius: 0 0 8px 8px;
+        padding: 4px 14px;
+    }
+
+    /* kafelki */
+    .menu-buttons .button {
+        filter: brightness(1) !important;
+        transition: background-position 0.3s, filter 0.3s;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .menu-buttons .button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        filter: brightness(1);
+        background-size: 110% !important;
+        background-position: 100% 0% !important;
+        transition: background-position 0.3s, filter 0.3s;
+    }
+
+    .menu-buttons .button:nth-child(1)::before {
+        background-image: url("/data/include/cms/photos/top-tiles/zone-1.png");
+    }
+
+    .menu-buttons .button:nth-child(2)::before {
+        background-image: url("/data/include/cms/photos/top-tiles/zone-2.png");
+    }
+
+    .menu-buttons .button:nth-child(3)::before {
+        background-image: url("/data/include/cms/photos/top-tiles/zone-3.png");
+    }
+
+    .menu-buttons .button:hover::before {
+        background-position: calc(100% - 30%) 0% !important;
+        filter: brightness(0.7) !important;
     }
 </style>
