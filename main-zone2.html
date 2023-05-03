@@ -1,5 +1,6 @@
 <div class="seo-text">
     <h4>
+        <img src="/data/gfx/mask/pol/logo_1_big.png" alt="logo echargers" height="18">
         Europejski lider wśród dystrybutorów ładowarek elektrycznych
     </h4>
     <p>
@@ -27,12 +28,33 @@
     <div class="tile">
         <h4>Subskrybuj Newsletter</h4>
         <p>By zawsze być na bieżqco i otrzymywać aktualności ze świata</p>
-        <form action="settings.php" method="post">
-            <input id="mailing_actionwidget" type="hidden" name="mailing_action" value="add" />
-            <input style="width: 200px;" type="text" name="mailing_email" value="Podaj swój adres e-mail" onblur="if ($(this).val() == '') {$(this).val('Podaj swój adres e-mail');}" onfocus="if ($(this).val() == 'Podaj swój adres e-mail') {$(this).val('');}"/>
-            <a style="background: url(/data/include/widget/13/bullet_small.png) no-repeat scroll left center transparent; color: #000000; display: block; font-size: 0.917em; line-height: 1.1em; margin: 15px 0 5px 0; padding-left: 11px; white-space: nowrap;" href="#add_newsletter" title="Kliknij, by dodać swój adres e-mail do naszej bazy" class="add_newsletterwidget" onclick="$('#menu_newsletterwidget form').submit();return false;">Zapisz się do newslettera</a>
-            <a style="background: url(/data/include/widget/13/bullet_small.png) no-repeat scroll left center transparent; color: #000000; display: block; font-size: 0.917em; line-height: 1.1em; margin: 5px 0 8px 0; padding-left: 11px; white-space: nowrap;" href="#remove_newsletter" title="Kliknij, by usunąć swój adres e-mail z naszej bazy" class="remove_newsletterwidget" onclick="$('#mailing_actionwidget').val('remove');$('#menu_newsletterwidget form').submit();return false;">Wypisz się z newslettera</a>
-            <div style="clear: both;"></div>
+        <form action="/settings.php" method="post" class="newsletter_form d-flex">
+            <input id="mailing_action_contact" name="mailing_action" value="add" type="hidden">
+            <div class="form-group">
+                <div class="has-feedback">
+                    <input class="newsletter_form_field form-control validate" name="mailing_email" id="mailing_email" type="text" data-validate="email" placeholder="Podaj Twój e-mail">
+                    <span class="form-control-feedback"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="has-feedback">
+                    <input class="newsletter_form_field form-control validate" name="mailing_name" id="mailing_name" type="text" maxlength="50" minlength="3" placeholder="Podaj Twoje imię">
+                    <span class="form-control-feedback"></span>
+                </div>
+            </div>
+            <button id="newsletter_button_add" type="submit" class="btn --solid" value="Zapisz się">Zapisz się</button>
+            <div id="newsletter_privacy_consent" class="form-group">
+                <div class="has-feedback">
+                    <label class="control-label d-flex align-items-center">
+                        <div class="text_to_right">
+                            <input class="newsletter_form_field validate" name="newsletter_consent" id="newsletter_consent" type="checkbox">
+                        </div>
+                        <div class="text_to_left">
+                            Chcę otrzymywać E-mail Newsletter. Wyrażam zgodę na przetwarzanie moich danych osobowych do celów marketingowych zgodnie z <a href="/pol-privacy-and-cookie-notice.html">polityką prywatności</a>
+                        </div>
+                    </label>
+                </div>
+            </div>
         </form>
     </div>
     <div class="tile">
@@ -51,6 +73,6 @@
             <a href="">
                 <img src="/data/include/cms/icons/social-media/youtube.png" alt="youtube e-chargers" width="20">
             </a>
-            </div>
+        </div>
     </div>
 </div>
