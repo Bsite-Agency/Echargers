@@ -177,6 +177,10 @@
 }
 .newsletter-and-social-media .form-group {
     margin-bottom: 0;
+    margin-right: 12px;
+}
+.newsletter-and-social-media .form-group:last-of-type {
+    margin-right: 0;
 }
 .newsletter-and-social-media .form-group:last-of-type {
     margin-top: 6px;
@@ -187,8 +191,20 @@
 .newsletter-and-social-media .form-control.form-control{
     height: 100%;
     border-radius: 8px;
-    padding: 6px 20px 6px 12px;
+    padding: 10px 20px 10px 12px;
     font-size: 12px;
+}
+.newsletter-and-social-media button.btn {
+    padding: 1.2rem 1rem;
+}
+label.control-label.d-flex.align-items-center {
+    gap: 10px;
+    font-size: 12px;
+    justify-content: center;
+    color: #807675;
+}
+.text_to_left {
+    width: 80%;
 }
 .social-media-btns{
     display: flex;
@@ -234,6 +250,10 @@ ul.footer_links_sub > li a{
     font-size: 14px;
     color: #807675;
 }
+#links_footer_1 ul.footer_links_sub > li:nth-child(2n) {
+    padding-bottom: 1rem !important;
+    padding-top: .25rem !important;
+}    
 #links_footer_1 ul.footer_links_sub > li:nth-child(2n + 1) {
     font-size: 12px;
     text-transform: uppercase;
@@ -242,6 +262,9 @@ ul.footer_links_sub > li a{
 #links_footer_1 ul.footer_links_sub > li:nth-child(2n) span{
     font-size: 14px;
     color: #000D0D;
+}
+#links_footer_1 ul.footer_links_sub > li:nth-child(2n + 1) span{
+    color: #807675;
 }
 
 @media (max-width: 979px) {
@@ -533,10 +556,11 @@ section.hotspot > .products.d-flex.flex-wrap {
 section.hotspot button.arrow{
     position: absolute;
     top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-    width: 20px;
-    height: 20px;
+    transform: translateY(-50%) rotate(180deg);
+    width: 24px;
+    height: 24px;
     border: 1px solid #2C1A1926;
+    border-radius: 50%;
     background: #fff;
     background-image: url("/data/include/cms/icons/arrow-right.svg");
     background-size: 12px;
@@ -549,7 +573,7 @@ section.hotspot button.arrow{
 }
 section.hotspot button.arrow-left{
     left: -10px;
-    transform: translateY(-50%) rotate(225deg);
+    transform: translateY(-50%) rotate(0deg);
 }
 section.hotspot button.arrow-right{
     right: -10px;
