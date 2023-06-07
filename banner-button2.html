@@ -7,7 +7,7 @@
 
 <style>
     .producent-ad{
-        padding: 82px;
+        padding: 82px 24px 48px;
         text-align: center;
         background: #444444;
         background-image: linear-gradient(0deg, #000, #0000), url("/data/include/cms/photos/producent-ad/producent-ad.png");
@@ -61,5 +61,10 @@
     }
     .producent-ad .hero-link:hover::after {
         transform: translateY(0);
+    }
+    @media (min-width: 757px){
+        .producent-ad{
+            padding: 82px;
+        }
     }
 </style>

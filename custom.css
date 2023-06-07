@@ -28,8 +28,13 @@ div#freeShipping {
   }
 
 .main_slider .slick-list{
-    height: 262px !important;
     border-radius: 8px;
+}
+
+@media (min-width: 757px){
+    .main_slider .slick-list{
+        height: 262px !important;
+    }
 }
 
 /* advantages */
@@ -44,7 +49,7 @@ div#freeShipping {
     padding: 16px 18px;
     border: 1px solid #70707026;
     border-radius: 8px;
-    min-width: 140px;
+    min-width: 220px;
 
     display: flex;
     gap: 14px;
@@ -83,6 +88,11 @@ div#freeShipping {
 
 .hotspot:not(.--slider):not(.--list):not(.--added) .products{
     border: none;
+    justify-content: flex-start;
+    flex-wrap: nowrap !important;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 14px;
 }
 
 #main_hotspot_zone1 .product,
@@ -149,6 +159,10 @@ div#freeShipping {
 #search .product__compare{
     display: none;
 }
+.product.col-6 {
+    flex: 0 0 calc(50% - 12px*1/2) !important;
+    max-width: calc(50% - 12px*1/2) !important;
+}
 @media (min-width: 757px){
     .products{
         gap: 26px;
@@ -156,7 +170,7 @@ div#freeShipping {
     .hotspot.--slider .headline__name{
         padding-right: 0;
     }
-    .slick-track{
+    .projector_page .slick-track{
         width: 100% !important;
     }
     .hotspot.--slider .slick-initialized{
@@ -217,6 +231,7 @@ div#freeShipping {
   
 .newsletter-and-social-media {
     display: flex;
+    flex-wrap: wrap;
     gap: 28px;
     margin: 56px 0 calc(56px - 65px);
     text-align: center;
@@ -227,6 +242,7 @@ div#freeShipping {
     padding: 34px 12px;
     border: 1px solid #70707026;
     border-radius: 8px;
+    min-width: 200px;
 }
 .newsletter-and-social-media > .tile h4{
     color: #000D0D;
@@ -244,6 +260,7 @@ div#freeShipping {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    gap: 6px;
 }
 .newsletter-and-social-media .form-group {
     margin-bottom: 0;
