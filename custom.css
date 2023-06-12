@@ -159,9 +159,11 @@ div#freeShipping {
 #search .product__compare{
     display: none;
 }
-.product.col-6 {
-    flex: 0 0 calc(50% - 12px*1/2) !important;
-    max-width: calc(50% - 12px*1/2) !important;
+@media (max-width: 756px) {
+    .product.col-6 {
+        flex: 0 0 calc(50% - 12px*1/2) !important;
+        max-width: calc(50% - 12px*1/2) !important;
+    }   
 }
 @media (min-width: 757px){
     .products{
@@ -171,7 +173,7 @@ div#freeShipping {
         padding-right: 0;
     }
     .projector_page .slick-track{
-        width: 100% !important;
+        min-width: 100% !important;
     }
     .hotspot.--slider .slick-initialized{
         margin-top: 0 !important;
