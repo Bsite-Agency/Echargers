@@ -3,7 +3,7 @@
 }
 
 div#freeShipping {
-    margin-top: 0;
+    margin: 0;
     border: none;
     color: #fff;
   }
@@ -18,6 +18,9 @@ div#freeShipping {
     z-index: -1;
   }
   @media (min-width: 1170px){
+    div#freeShipping {
+        margin: 0 0 1rem;
+    }
   div#freeShipping:before {
     left: calc((100vw - 1170px)/-2);
   }
