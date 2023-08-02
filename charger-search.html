@@ -10,7 +10,7 @@
             <form action="/search.php" method="get" class="byCar" id="byCarSearch">
                 <input type="text" list="makeList" class="makeInput" placeholder="podaj markę np. Opel">
                 <input type="text" list="modelList" class="modelInput" placeholder="podaj model np. Adam">
-                <button class="btn --solid filterSearch">szukaj</button>
+                <button class="btn --solid filterSearch">Wyszukaj</button>
             </form>
             <datalist id="makeList"></datalist>
             <datalist id="modelList"></datalist>
@@ -19,6 +19,9 @@
                 <select class="powerInput">
                     <option hidden disabled selected value>wybierz moc</option>
                 </select>
+                <div class="socket-input-wrapper">
+                    <p>Wybierz typ złącza</p>
+                </div>
                 <button class="btn --solid filterSearch">Wyszukaj</button>
             </form>
         </div>
@@ -83,12 +86,27 @@
         flex-basis: 100%;
         font-size: 1.08em;
     }
-    .tabs > form > input {
+    .tabs > form > input, .tabs > form > select {
         border: 1px solid #DEDEDE;
         line-height: 1;
         height: unset;
         padding: 8px 4px 8px 12px;
         box-sizing: border-box;
+    }
+    .tabs > form > select {
+        padding: 8px 12px;
+    }
+    .socket-input-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .socket-input-wrapper > p {
+        flex-basis: 100%;
+        margin: 0;
+        line-height: 1;
     }
 </style>
 
@@ -192,8 +210,8 @@
             let newLabel = document.createElement("label");
             newLabel.setAttribute("for", id+index);
             newLabel.innerHTML = socket['socketName'];
-            powerInput.parentNode.insertBefore(newInput, powerInput.nextSibling);
-            newInput.parentNode.insertBefore(newLabel, newInput.nextSibling);
+            socketInputWrapper.appendChild(newInput);
+            socketInputWrapper.appendChild(newLabel);
         });
     }
     
@@ -223,7 +241,7 @@
     const modelInput = document.querySelector("input.modelInput");
     
     const powerInput = document.querySelector("select.powerInput");
-    const socketInput = document.querySelector("input.socketInput");
+    const socketInputWrapper = document.querySelector("div.socket-input-wrapper");
     
     const byCarForm = document.querySelector("form.byCar");
     
