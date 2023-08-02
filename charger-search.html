@@ -1,25 +1,28 @@
 <div class="search-box">
     <h3>Znajdź ładowarkę</h3>
     <p>Korzystając z poniższej wyszukiwarki ładowarek</p>
-    <div class="tabs">
+    <div class="tabs-selectors">
         <a href="#byCarSearch" class="tab-selector">wg modelu</a>
         <a href="#byPowerSearch" class="tab-selector">wg mocy</a>
     </div>
+    <div class="tabs">
+        <form action="/search.php" method="get" class="byCar" id="byCarSearch">
+            <input type="text" list="makeList" class="makeInput">
+            <input type="text" list="modelList" class="modelInput">
+            <button class="btn --solid filterSearch">szukaj</button>
+        </form>
+        <datalist id="makeList"></datalist>
+        <datalist id="modelList"></datalist>
+        
+        <form action="/search.php" method="get" id="byPowerSearch">
+            <select class="powerInput">
+                <option hidden disabled selected value> -- wybierz moc -- </option>
+            </select>
+            <button class="btn --solid filterSearch">szukaj</button>
+        </form>
+    </div>
 </div>
-<form action="/search.php" method="get" class="byCar" id="byCarSearch">
-    <input type="text" list="makeList" class="makeInput">
-    <input type="text" list="modelList" class="modelInput">
-    <button class="btn --solid filterSearch">szukaj</button>
-</form>
-<datalist id="makeList"></datalist>
-<datalist id="modelList"></datalist>
 
-<form action="/search.php" method="get" id="byPowerSearch">
-    <select class="powerInput">
-        <option hidden disabled selected value> -- wybierz moc -- </option>
-    </select>
-    <button class="btn --solid filterSearch">szukaj</button>
-</form>
 
 <script>
     const getFiltersPath = "/search.php?getProductXML=true&xmlType=filtering";
