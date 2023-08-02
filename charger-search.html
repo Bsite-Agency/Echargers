@@ -3,13 +3,13 @@
         <h3>Znajdź ładowarkę</h3>
         <p>Korzystając z poniższej wyszukiwarki ładowarek</p>
         <div class="tabs-selectors">
-            <a href="#byCarSearch" class="tab-selector">wg modelu</a>
+            <a href="#byCarSearch" class="tab-selector active">wg modelu</a>
             <a href="#byPowerSearch" class="tab-selector">wg mocy</a>
         </div>
         <div class="tabs">
             <form action="/search.php" method="get" class="byCar" id="byCarSearch">
-                <input type="text" list="makeList" class="makeInput">
-                <input type="text" list="modelList" class="modelInput">
+                <input type="text" list="makeList" class="makeInput" placeholder="podaj markę np. Opel">
+                <input type="text" list="modelList" class="modelInput" placeholder="podaj model np. Adam">
                 <button class="btn --solid filterSearch">szukaj</button>
             </form>
             <datalist id="makeList"></datalist>
@@ -17,9 +17,9 @@
             
             <form action="/search.php" method="get" id="byPowerSearch">
                 <select class="powerInput">
-                    <option hidden disabled selected value> -- wybierz moc -- </option>
+                    <option hidden disabled selected value>wybierz moc</option>
                 </select>
-                <button class="btn --solid filterSearch">szukaj</button>
+                <button class="btn --solid filterSearch">Wyszukaj</button>
             </form>
         </div>
     </div>
@@ -27,12 +27,19 @@
 
 <style>
     a.tab-selector {
-        border: 1px solid #00D8FF;
-        border-radius: 30px;
-        background: #fff;
-        color: #00D8FF;
         padding: 4px 10px;
+
+        background: #fff;
+        color: #A2A2A2;
+        
+        border: 1px solid #A2A2A2;
+        border-radius: 30px;
         text-decoration: none;
+        font-size: 1.08em;
+    }
+    a.tab-selector.active{
+        border: 1px solid #00D8FF;
+        color: #00D8FF;
     }
     .tabs-selectors {
         display: flex;
@@ -70,9 +77,18 @@
     }
     .tabs > form > * {
         flex: 1 0 0;
+        border-radius: 8px;
     }
     button.btn.--solid.filterSearch {
         flex-basis: 100%;
+        font-size: 1.08em;
+    }
+    .tabs > form > input {
+        border: 1px solid #DEDEDE;
+        line-height: 1;
+        height: unset;
+        padding: 8px 4px 8px 12px;
+        box-sizing: border-box;
     }
 </style>
 
