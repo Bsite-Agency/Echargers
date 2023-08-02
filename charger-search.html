@@ -296,4 +296,16 @@
     
     httpGetAsync(window.location.origin + getFiltersPath, loadData);
     if (makeInput.value != "") modelInputHandler();
+
+    /*tabs*/
+    const tabBTN = document.querySelectorAll(".tabs-selectors > a");
+
+    tabBTN.forEach(btn => {
+        btn.addEventListener("click", (e)=>{
+            tabBTN.forEach(btn => {
+                btn.classList.remove("active");
+            });
+            e.target.classList.add("active");
+        });
+    });
 </script>
