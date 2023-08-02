@@ -129,12 +129,14 @@
 
 <script>
     const getFiltersPath = "/search.php?getProductXML=true&xmlType=filtering";
+    const getMakesWithSpacesPath = "/data/include/cms/marki-spacja.txt";
     let makeList;
     let modelList;
     let carMakes;
     let choosenFilters = [];
     let foundFilter;
     let filterName;
+    let makesWithSpaces;
     
     function httpGetAsync(theUrl, callback)
     {
@@ -160,8 +162,19 @@
         const makeFilter = filters.querySelectorAll('[name="Model pojazdu"] > *');
         carMakes = [];
         makeFilter.forEach(carMake => {
-            let makeName = carMake.getAttribute("name").split(/ (.*)/s)[0];
-            let modelName = carMake.getAttribute("name").split(/ (.*)/s)[1];
+            let nameNBrand = carMake.getAttribute("name");
+            let makeName;
+            let modelName;
+            makesWithSpaces.forEach(makeWithSpaces => {
+                if (nameNBrand.toLowerCase().startsWith(makeWithSpaces.toLowerCase())){
+                    makeName = nameNBrand.substring(0, makeWithSpaces.length);
+                    modelName = nameNBrand.substring(makeWithSpaces.length + 1);
+                }
+            });
+            if (makeName == undefined || modelName == undefined) {
+                makeName = nameNBrand.split(/ (.*)/s)[0];
+                modelName = nameNBrand.split(/ (.*)/s)[1];
+            }
             carMakes.push({makeName: makeName, modelName: modelName, value: carMake.getAttribute("value")})
         })
         return carMakes;
@@ -311,7 +324,13 @@
         updateSocketList(...sockets);
     }
     
-    httpGetAsync(window.location.origin + getFiltersPath, loadData);
+    function loadMakesWithSpaces(resp){
+        makesWithSpaces = resp.split("\n");
+        
+        httpGetAsync(window.location.origin + getFiltersPath, loadData);
+    };
+
+    httpGetAsync(getMakesWithSpacesPath, loadMakesWithSpaces);
     if (makeInput.value != "") modelInputHandler();
 
     /*tabs*/
