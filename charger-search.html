@@ -1,0 +1,202 @@
+<form action="/search.php" method="get" class="byCar">
+    <input type="text" list="makeList" class="makeInput">
+    <input type="text" list="modelList" class="modelInput">
+    <button class="btn --solid filterSearch">szukaj</button>
+</form>
+<datalist id="makeList"></datalist>
+<datalist id="modelList"></datalist>
+
+<form action="/search.php" method="get">
+    <select class="powerInput">
+        <option hidden disabled selected value> -- wybierz moc -- </option>
+    </select>
+    <button class="btn --solid filterSearch">szukaj</button>
+</form>
+
+<script>
+    const getFiltersPath = "/search.php?getProductXML=true&xmlType=filtering";
+    let makeList;
+    let modelList;
+    let carMakes;
+    let choosenFilters = [];
+    let foundFilter;
+    let filterName;
+    
+    function httpGetAsync(theUrl, callback)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() { 
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+        xmlHttp.send(null);
+    }
+    
+    function parseFilters(resp){
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(resp, "application/xml");
+        const filters = doc.querySelector('filtering');
+        return filters;
+    }
+    
+    function parseCarFilter(filters){
+        filterName = filters;
+        filterName = filters.querySelector('[name="Model pojazdu"]').getAttribute("id");
+        const makeFilter = filters.querySelectorAll('[name="Model pojazdu"] > *');
+        carMakes = [];
+        makeFilter.forEach(carMake => {
+            let makeName = carMake.getAttribute("name").split(/ (.*)/s)[0];
+            let modelName = carMake.getAttribute("name").split(/ (.*)/s)[1];
+            carMakes.push({makeName: makeName, modelName: modelName, value: carMake.getAttribute("value")})
+        })
+        return carMakes;
+    }
+    
+    function parsePowerFilter(filters){
+        let filterName = filters.querySelector('[name="Moc przyłączeniowa"]').getAttribute("id");
+        powerInput.setAttribute("name", filterName);
+        const powerFilters = filters.querySelectorAll('[name="Moc przyłączeniowa"] > *');
+        powers = [];
+        powerFilters.forEach(powerFilter => {
+            powers.push({powerName: powerFilter.getAttribute("name"), value: powerFilter.getAttribute("value")})
+        })
+        return powers;
+    }
+    
+    function parseSocketFilter(filters){
+        let filterName = filters.querySelector('[name="Typ złącza"]').getAttribute("id");
+        const socketFilters = filters.querySelectorAll('[name="Typ złącza"] > *');
+        sockets = [];
+        socketFilters.forEach(socketFilter => {
+            sockets.push({socketName: socketFilter.getAttribute("name"), value: socketFilter.getAttribute("value")})
+        })
+        return [sockets, filterName];
+    }
+    
+    function updateMakeList(carMakes){
+        makeList = carMakes.map((carMake) => {
+          return carMake['makeName'];
+        });
+        makeList = [...new Set(makeList)];
+        const makeSuggestionList = document.querySelector("datalist#makeList");
+        makeList.forEach(makeName => {
+            let newOption = document.createElement("option");
+            newOption.innerHTML = makeName;
+            makeSuggestionList.appendChild(newOption);
+        });
+    }
+    
+    function updatePowerList(powers){
+        powerList = powers.map((power) => {
+          return power['powerName'];
+        });
+        const powerSuggestionList = document.querySelector("select.powerInput");
+        powers.forEach(power => {
+            let newOption = document.createElement("option");
+            newOption.value = power['value'];
+            newOption.innerHTML = power['powerName'];
+            powerSuggestionList.appendChild(newOption);
+        });
+    }
+    
+    function updateSocketList(sockets, id){
+        socketList = sockets.map((socket) => {
+          return socket['socketName'];
+        });
+        sockets.forEach((socket, index) => {
+            let newInput = document.createElement("input");
+            newInput.type = "checkbox";
+            newInput.name = id;
+            newInput.id = id+index;
+            newInput.value = socket["value"];
+            let newLabel = document.createElement("label");
+            newLabel.setAttribute("for", id+index);
+            newLabel.innerHTML = socket['socketName'];
+            powerInput.parentNode.insertBefore(newInput, powerInput.nextSibling);
+            newInput.parentNode.insertBefore(newLabel, newInput.nextSibling);
+        });
+    }
+    
+    
+    function clearModelList(){
+        const modelSuggestionList = document.querySelector("datalist#modelList");
+        while (modelSuggestionList.firstChild) {
+            modelSuggestionList.removeChild(modelSuggestionList.lastChild);
+        }
+    }
+    function updateModelList(make){
+        modelList = carMakes.map((carMake) => {
+          return carMake['modelName'];
+        });
+        const modelSuggestionList = document.querySelector("datalist#modelList");
+        carMakes.forEach(carMake => {
+            if (carMake.makeName == make){
+                let newOption = document.createElement("option");
+                newOption.innerHTML = carMake.modelName;
+                modelSuggestionList.appendChild(newOption);
+            }
+        });
+    }
+    
+    
+    const makeInput = document.querySelector("input.makeInput");
+    const modelInput = document.querySelector("input.modelInput");
+    
+    const powerInput = document.querySelector("select.powerInput");
+    const socketInput = document.querySelector("input.socketInput");
+    
+    const byCarForm = document.querySelector("form.byCar");
+    
+    function modelInputHandler(){
+         if(makeList.indexOf(makeInput.value) != -1){
+            updateModelList(makeInput.value);
+            choosenFilters.push(makeInput.value);
+        }
+        else{
+            modelInput.value = "";
+            clearModelList();
+        }
+    }
+    
+    makeInput.addEventListener("input", modelInputHandler);
+    modelInput.addEventListener("input", (e)=>{
+        console.dir(modelList);
+        if(modelList.indexOf(modelInput.value) != -1){
+            choosenFilters.push(modelInput.value);
+            foundFilter = "";
+            carMakes.every(carMake => {
+                if(carMake.makeName == makeInput.value && carMake.modelName == modelInput.value){
+                    foundFilter = carMake.value;
+                    return false;
+                }
+                return true;
+            })
+        }
+    });
+    
+    byCarForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if(choosenFilters.length == 2){
+            let redirectionLink = window.location.origin + "/search.php?";
+            redirectionLink += filterName;
+            redirectionLink += "=";
+            redirectionLink += foundFilter;
+            window.location.href = redirectionLink;
+        }
+    })
+    
+    function loadData(resp){
+        let parsedFilters = parseFilters(resp);
+        let carMakes = parseCarFilter(parsedFilters);
+        let powers = parsePowerFilter(parsedFilters);
+        let sockets = parseSocketFilter(parsedFilters);
+        
+        updateMakeList(carMakes);
+        updatePowerList(powers);
+        updateSocketList(...sockets);
+    }
+    
+    httpGetAsync(window.location.origin + getFiltersPath, loadData);
+    if (makeInput.value != "") modelInputHandler();
+</script>
