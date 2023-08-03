@@ -52,6 +52,11 @@
     }
     .search-box > h3 {
         font-weight: 600;
+        margin: 0 0 15px;
+        color: #000;
+    }
+    .search-box > p {
+        margin: 15px 0;
     }
     .search-widget{
         background: url("/data/include/cms/banner-bsite/banner-bg.jpg");
@@ -83,6 +88,7 @@
     .tabs > form > * {
         flex: 1 0 calc(50% - 5px);
         border-radius: 8px;
+        min-width: 0;
     }
     button.btn.--solid.filterSearch {
         flex-basis: 100%;
@@ -108,6 +114,7 @@
         height: unset;
         padding: 8px 4px 8px 12px;
         box-sizing: border-box;
+        font-size: 13px;
     }
     .tabs > form > select {
         padding: 8px 12px;
@@ -128,7 +135,7 @@
 </style>
 
 <script>
-    const getFiltersPath = "/search.php?getProductXML=true&xmlType=filtering";
+    const getFiltersPath = "/search.php?node=&getProductXML=true&xmlType=filtering";
     const getMakesWithSpacesPath = "/data/include/cms/marki-spacja.txt";
     let makeList;
     let modelList;
@@ -218,13 +225,15 @@
         powerList = powers.map((power) => {
           return power['powerName'];
         });
-        const powerSuggestionList = document.querySelector("select.powerInput");
-        powers.forEach(power => {
-            let newOption = document.createElement("option");
-            newOption.value = power['value'];
-            newOption.innerHTML = power['powerName'];
-            powerSuggestionList.appendChild(newOption);
-        });
+        const powerSuggestionLists = document.querySelectorAll("select.powerInput");
+        powerSuggestionLists.forEach(powerSuggestionList =>
+            powers.forEach(power => {
+                let newOption = document.createElement("option");
+                newOption.value = power['value'];
+                newOption.innerHTML = power['powerName'];
+                powerSuggestionList.appendChild(newOption);
+            })
+        );
     }
     
     function updateSocketList(sockets, id){

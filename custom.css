@@ -43,6 +43,7 @@ div#freeShipping {
     flex-wrap: wrap;
     gap: 16px;
     margin: 0 0 2rem;
+    text-align: left;
 }
 .advantage {
     flex: 1 1 0px;
@@ -56,13 +57,13 @@ div#freeShipping {
 }
 .advantage h5 {
     margin: 0;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     color: #000D0D;
 }  
 .advantage p {
     margin: 5px 0 0;
-    font-size: 12px;
+    font-size: 9px;
     color: #404a4a;
 }
 
@@ -230,6 +231,7 @@ div#freeShipping {
 .seo-text{
     border-top: 1px solid #7070701A;
     padding-top: 44px;
+    margin-bottom: 56px;
 }
 .seo-text > h4 {
     font-size: 14px;
@@ -248,7 +250,7 @@ div#freeShipping {
     display: flex;
     flex-wrap: wrap;
     gap: 28px;
-    margin: 56px 0 calc(56px - 65px);
+    margin: 0 0 calc(56px - 65px);
     text-align: center;
 }
   
