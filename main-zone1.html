@@ -1,37 +1,6 @@
-<div class="advantages">
-    <div class="advantage">
-        <img class="advantage-icon" src="/data/include/cms/icons/safety.svg" alt="bezpieczne zakupy" width=32>
-        <div>
-            <h5>Bezpieczne zakupy</h5>
-            <p>Kupuj szybko i bezpiecznie (SHS + HTTPS)</p>
-        </div>
-    </div>
-    <div class="advantage">
-        <img class="advantage-icon" src="/data/include/cms/icons/coin.svg" alt="konkurencyjne ceny" width=32>
-        <div>
-            <h5>Konkurencyjne ceny</h5>
-            <p>Najlepsza oferta cenowo w branży</p>
-        </div>
-    </div>
-    <div class="advantage">
-        <img class="advantage-icon" src="/data/include/cms/icons/certificate.svg" alt="certyfikowana obsługa" width=32>
-        <div>
-            <h5>Certyfikowana obsługa</h5>
-            <p>Gwarancja opieki pozakupowej (30 dni)</p>
-        </div>
-    </div>
-    <div class="advantage">
-        <img class="advantage-icon" src="/data/include/cms/icons/ranking.svg" alt="lider" width=32>
-        <div>
-            <h5>Lider konsumentów</h5>
-            <p>Ulubieniec konsumentów na rynku</p>
-        </div>
-    </div>
-</div>
-
 <div class="menu-buttons">
     <div class="button button1">
-        <a href="#">
+        <a href="/pl/menu/ladowarki-przenosne-156.html">
             <div class="title">
                 <span>Ładowarki przenośne</span>
                 <span>Zobacz również</span>
@@ -39,7 +8,7 @@
         </a>
     </div>
     <div class="button button2">
-        <a href="#">
+        <a href="/pl/menu/wallbox-stacje-nascienne-157.html">
             <div class="title">
                 <span>Wallbox</span>
                 <span>Zobacz również</span>
@@ -47,7 +16,7 @@
         </a>
     </div>
     <div class="button button3">
-        <a href="#">
+        <a href="/pl/menu/akcesoria-158.html">
             <div class="title">
                 <span>Akcesoria do ładowania</span>
                 <span>Zobacz również</span>
@@ -78,15 +47,6 @@
         text-decoration: none;
         position: relative;
         z-index: 10;
-    }
-    @media (min-width: 757px){
-        .menu-buttons > .button1 { grid-area: 1 / 1 / 3 / 2; }
-        .menu-buttons > .button2 { grid-area: 1 / 2 / 2 / 3; }
-        .menu-buttons > .button3 { grid-area: 2 / 2 / 3 / 3; }
-
-        .menu-buttons > .button > a{
-            min-height: 250px;
-        }
     }
     .menu-buttons .title{
         display: flex;
@@ -134,7 +94,7 @@
         bottom: 0;
         right: 0;
         filter: brightness(1);
-        background-size: 110% !important;
+        background-size: cover !important;
         background-position: 100% 0% !important;
         transition: background-position 0.3s, filter 0.3s;
     }
@@ -154,5 +114,17 @@
     .menu-buttons .button:hover::before {
         background-position: calc(100% - 30%) 0% !important;
         filter: brightness(0.7) !important;
+    }
+    @media (min-width: 757px){
+        .menu-buttons > .button1 { grid-area: 1 / 1 / 3 / 2; }
+        .menu-buttons > .button2 { grid-area: 1 / 2 / 2 / 3; }
+        .menu-buttons > .button3 { grid-area: 2 / 2 / 3 / 3; }
+
+        .menu-buttons > .button > a{
+            min-height: 250px;
+        }
+        .menu-buttons .button::before {
+            background-size: 110% !important;
+        }
     }
 </style>
